@@ -1,0 +1,129 @@
+---
+alwaysApply: true
+---
+### 📌 Visão geral
+
+# 📄 project-rules.md
+
+## Projeto: Kindle AI Client
+
+---
+
+## 🎯 Visão geral
+
+Este projeto é um **cliente de IA minimalista**, projetado especificamente para funcionar no navegador limitado do Kindle.
+O objetivo é proporcionar uma forma simples, rápida e leve do usuário enviar uma pergunta e receber uma resposta de um modelo de linguagem (ex: OpenAI), sem qualquer sobrecarga visual ou técnica.
+
+---
+
+## 🚀 Funcionalidades principais
+
+### 1. Página Inicial (`/`)
+
+* Exibe um formulário com:
+
+  * `textarea` para o usuário digitar sua pergunta (prompt).
+  * `button` para enviar o formulário.
+* O formulário utiliza `method="POST"` e `action="/responder"`.
+* Não há JavaScript obrigatório; a navegação funciona apenas com HTML puro.
+
+### 2. Página de Resposta (`/responder`)
+
+* Recebe via `POST` o prompt enviado pelo usuário.
+* Sanitiza e valida o input.
+* Envia o prompt ao backend, que consulta o modelo de IA.
+* Renderiza uma página HTML com:
+
+  * O prompt original enviado pelo usuário.
+  * A resposta gerada pela IA.
+  * Um link claro para retornar à home e enviar outra pergunta.
+
+---
+
+## 🔒 Regras de negócio
+
+* Cada requisição é **independente**: não há contexto ou histórico de conversa.
+* Não há qualquer forma de login, cadastro ou sessão persistente.
+* Nenhum dado pessoal do usuário é armazenado.
+* O fluxo é sempre:
+
+  ```
+  [Home -> Form -> POST -> /responder -> HTML de resposta -> Link "voltar"]
+  ```
+* Todo o processamento da pergunta e geração de resposta é feito **exclusivamente no servidor**.
+* A interface não armazena ou exibe conversas passadas.
+
+---
+
+## 🚦 Restrições técnicas
+
+### Compatibilidade
+
+* O site deve funcionar perfeitamente no navegador do Kindle, que tem suporte limitado a HTML e CSS.
+* Não utilizar:
+
+  * Frameworks front-end (React, Vue, Angular, etc.).
+  * Bundlers como Webpack ou Vite no cliente.
+  * Shadow DOM ou Web Components.
+  * Assets externos (como fontes ou imagens pesadas).
+* O HTML deve ser válido, simples e com fallback total caso CSS ou JS não carreguem.
+
+### Backend
+
+* Responsável por:
+
+  * Receber o prompt.
+  * Chamar o modelo de linguagem (via OpenAI API ou outro provedor).
+  * Retornar o HTML final com a resposta renderizada.
+* Utilizar Node.js com Express (ou Fastify) para máxima leveza e controle.
+* Template engine opcional (EJS, Pug ou HTML string literals).
+* Implementar:
+
+  * Sanitização dos dados de entrada para evitar XSS.
+  * Timeout configurável para chamadas à IA, retornando mensagem amigável se excedido.
+  * Compressão (`gzip`) e headers adequados (`Cache-Control`, `Content-Security-Policy`).
+
+### Frontend
+
+* 100% Server Side Rendering (SSR).
+* Sem dependências JS obrigatórias.
+* CSS opcional deve ser embutido no próprio HTML (inline style ou `<style>` interno), para reduzir requisições HTTP.
+
+---
+
+## ⚖️ Regras adicionais e limites operacionais
+
+* O campo de prompt do usuário terá um limite máximo de **500 caracteres**.
+* O tempo máximo para resposta do modelo de IA será de **10 segundos**.
+* Caso a IA não responda no tempo esperado, o usuário verá uma página de erro amigável com sugestão para tentar novamente.
+* Todos os textos gerados devem ser escapados apropriadamente para evitar qualquer problema de renderização ou segurança no HTML.
+
+---
+
+## 🔐 Segurança e privacidade
+
+* Nenhum dado pessoal ou IP será armazenado para tracking.
+* Logs do servidor devem conter apenas erros e métricas mínimas para troubleshooting, nunca prompts completos ou respostas.
+* O serviço será stateless e sem cookies ou sessões.
+
+---
+
+## 🔍 Futuras extensões permitidas
+
+> Não fazem parte do escopo inicial, mas podem ser consideradas sem comprometer o projeto:
+
+* Salvar as perguntas e respostas recentes apenas no servidor para análise estatística agregada.
+* Oferecer modo escuro via CSS simples, adaptado para e-readers.
+* Permitir exportar a resposta como PDF ou ePub.
+
+---
+
+## ✅ Sumário executivo
+
+* ✅ Uma pergunta por vez, sem histórico.
+* ✅ Interface puramente HTML, compatível com Kindle.
+* ✅ Todo processamento no backend.
+* ✅ Sem login, sem sessão, sem dados pessoais.
+* ✅ Foco em leveza, simplicidade e acessibilidade.
+
+

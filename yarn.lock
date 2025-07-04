@@ -297,6 +297,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^24.0.10":
+  version: 24.0.10
+  resolution: "@types/node@npm:24.0.10"
+  dependencies:
+    undici-types: "npm:~7.8.0"
+  checksum: 10c0/11dbd869d3e12ee7b7818113588950e538783e45d227122174c763cb05977defbd1e01b44b5ccd4b8997e42c3df7f7b83c6ee05cfa43d924c8882886bc5f6582
+  languageName: node
+  linkType: hard
+
 "@types/qs@npm:*":
   version: 6.14.0
   resolution: "@types/qs@npm:6.14.0"
@@ -1084,6 +1093,7 @@ __metadata:
   resolution: "kindle-ai-client@workspace:."
   dependencies:
     "@types/express": "npm:^5.0.3"
+    "@types/node": "npm:^24.0.10"
     body-parser: "npm:^2.2.0"
     express: "npm:^5.1.0"
     tsx: "npm:^4.20.3"

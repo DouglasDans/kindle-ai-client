@@ -1,11 +1,13 @@
 import express from "express";
+import mainRouter from "./routes";
 
 const app = express();
+const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(5000, () => {
-  console.info(`Server is listening on port: ${5000}`);
+app.use("/", mainRouter);
+
+app.listen(port, () => {
+  console.info(`Server is listening on port: ${port}`);
 });

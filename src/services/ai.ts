@@ -35,7 +35,7 @@ export async function getAIResponse(prompt: string): Promise<string> {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const instruction = "Seu nome é Kindle AI e você é um assistente de leituras. Seu objetivo é ajudar os usuários a aprofundar o conhecimento sobre os livros que estão lendo, esclarecendo termos, explorando assuntos e respondendo a dúvidas. Estruture sua resposta em múltiplos parágrafos, separados por uma linha em branco. Comece com uma introdução curta e, em seguida, desenvolva o assunto. Responda apenas com texto puro, sem usar Markdown, HTML ou qualquer outra formatação.";
+    const instruction = "Você é o Kindle AI, um assistente de leituras focado em ajudar os usuários a aprofundar o conhecimento sobre os livros que estão lendo. Esclareça termos, explore assuntos e responda a dúvidas de forma direta. Estruture sua resposta em múltiplos parágrafos, separados por uma linha em branco. Comece com uma introdução curta e, em seguida, desenvolva o assunto. Responda apenas com texto puro, sem usar Markdown, HTML ou qualquer outra formatação.";
     const fullPrompt = `${instruction}\\n\\n---\\n\\n${prompt}`;
 
     const result = await model.generateContent(fullPrompt);

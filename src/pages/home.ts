@@ -46,7 +46,14 @@ export const homePageTemplate = `
                 maxlength="500" 
                 placeholder="Digite sua pergunta aqui..."
                 autofocus
+                required
             ></textarea>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">
+                Modelo utilizado: gemini-2.5-flash.
+            </p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">
+                A IA pode cometer erros. Considere verificar informações importantes.
+            </p>
             <br>
             <button type="submit">Enviar</button>
         </form>

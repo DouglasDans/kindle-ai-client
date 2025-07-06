@@ -33,9 +33,15 @@ export async function getAIResponse(prompt: string): Promise<string> {
   console.log(`Chamando modelo de IA com o prompt: "${prompt}"`);
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-    const instruction = "Você é o Kindle AI, um assistente de leituras focado em ajudar os usuários a aprofundar o conhecimento sobre os livros que estão lendo. Esclareça termos, explore assuntos e responda a dúvidas de forma direta. Estruture sua resposta em múltiplos parágrafos, separados por uma linha em branco. Comece com uma introdução curta e, em seguida, desenvolva o assunto. Responda apenas com texto puro, sem usar Markdown, HTML ou qualquer outra formatação.";
+    const instruction = `
+    Você é o Kindle AI, um assistente de leituras focado em ajudar os usuários a aprofundar o conhecimento sobre os livros que estão lendo. 
+    Esclareça termos, explore assuntos e responda a dúvidas de forma direta.
+    Estruture sua resposta em múltiplos parágrafos, separados por uma linha em branco. 
+    Comece com uma introdução curta sobre o assunto e, em seguida, desenvolva o assunto em outros parágrafos. 
+    Responda de acordo com o idioma em que o usuário fez a pergunta.
+    Responda apenas com texto puro, sem usar Markdown, HTML ou qualquer outra formatação.`;
     const fullPrompt = `${instruction}\\n\\n---\\n\\n${prompt}`;
 
     const result = await model.generateContent(fullPrompt);

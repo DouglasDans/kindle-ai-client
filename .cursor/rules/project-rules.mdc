@@ -24,10 +24,10 @@ O objetivo é proporcionar uma forma simples, rápida e leve do usuário enviar 
 
   * `textarea` para o usuário digitar sua pergunta (prompt).
   * `button` para enviar o formulário.
-* O formulário utiliza `method="POST"` e `action="/responder"`.
+* O formulário utiliza `method="POST"` e `action="/response"`.
 * Não há JavaScript obrigatório; a navegação funciona apenas com HTML puro.
 
-### 2. Página de Resposta (`/responder`)
+### 2. Página de Resposta (`/response`)
 
 * Recebe via `POST` o prompt enviado pelo usuário.
 * Sanitiza e valida o input.
@@ -48,7 +48,7 @@ O objetivo é proporcionar uma forma simples, rápida e leve do usuário enviar 
 * O fluxo é sempre:
 
   ```
-  [Home -> Form -> POST -> /responder -> HTML de resposta -> Link "voltar"]
+  [Home -> Form -> POST -> /response -> HTML de resposta -> Link "voltar"]
   ```
 * Todo o processamento da pergunta e geração de resposta é feito **exclusivamente no servidor**.
 * A interface não armazena ou exibe conversas passadas.

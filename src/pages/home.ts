@@ -38,7 +38,7 @@ export const homePageTemplate = `
     <main>
         <h1>Kindle AI</h1>
         <p>Faça uma pergunta para a IA.</p>
-        <form action="/responder" method="POST">
+        <form action="/response" method="POST">
             <textarea 
                 name="prompt" 
                 rows="10" 
@@ -49,7 +49,7 @@ export const homePageTemplate = `
                 required
             ></textarea>
             <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">
-                Modelo utilizado: gemini-2.5-flash.
+                Modelo utilizado: gemini-2.0-flash.
             </p>
             <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">
                 A IA pode cometer erros. Considere verificar informações importantes.

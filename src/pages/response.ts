@@ -6,11 +6,11 @@ interface ResponsePageData {
 export const renderResponsePage = (data: ResponsePageData): string => {
     return `
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resposta - Kindle AI</title>
+    <title>Answer - Kindle AI</title>
     <style>
         body {
             font-family: sans-serif;
@@ -45,17 +45,17 @@ export const renderResponsePage = (data: ResponsePageData): string => {
 </head>
 <body>
     <main>
-        <h2>Sua Pergunta:</h2>
+        <h2>Your Question:</h2>
         <p>
             ${data.prompt}
         </p>
         <hr>
-        <h2>Resposta da IA:</h2>
+        <h2>AI Response:</h2>
         <p>
             ${data.response}
         </p>
         <hr>
-        <a href="/">Fazer outra pergunta</a>
+        <a href="/">Ask another question</a>
     </main>
 </body>
 </html>

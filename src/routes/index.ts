@@ -21,14 +21,14 @@ router.post("/response", async (req: Request, res: Response) => {
       return res.redirect("/");
     }
 
-    // Sanitização básica
+    // Basic sanitization
     const sanitizedPrompt = prompt.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    // Validação
+    // Validation
     if (sanitizedPrompt.length > 500) {
       return res
         .status(400)
-        .send("Erro: O prompt não pode ter mais de 500 caracteres.");
+        .send("Error: The prompt cannot exceed 500 characters.");
     }
 
     const aiResponse = await getAIResponse(sanitizedPrompt);
@@ -37,8 +37,8 @@ router.post("/response", async (req: Request, res: Response) => {
       renderResponsePage({ prompt: sanitizedPrompt, response: aiResponse })
     );
   } catch (error) {
-    console.error("Erro ao processar a resposta da IA:", error);
-    res.status(500).send("Ocorreu um erro interno. Tente novamente mais tarde.");
+    console.error("Error processing AI response:", error);
+    res.status(500).send("An internal error occurred. Please try again later.");
   }
 });
 

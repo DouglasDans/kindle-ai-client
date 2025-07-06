@@ -1,6 +1,6 @@
 export const homePageTemplate = `
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,25 +37,25 @@ export const homePageTemplate = `
 <body>
     <main>
         <h1>Kindle AI</h1>
-        <p>Faça uma pergunta para a IA.</p>
+        <p>Ask a question to the AI.</p>
         <form action="/response" method="POST">
             <textarea 
                 name="prompt" 
                 rows="10" 
                 cols="40" 
                 maxlength="500" 
-                placeholder="Digite sua pergunta aqui..."
+                placeholder="Type your question here..."
                 autofocus
                 required
             ></textarea>
             <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">
-                Modelo utilizado: gemini-2.0-flash.
+                Model used: gemini-2.0-flash.
             </p>
             <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #555;">
-                A IA pode cometer erros. Considere verificar informações importantes.
+                The AI can make mistakes. Consider checking important information.
             </p>
             <br>
-            <button type="submit">Enviar</button>
+            <button type="submit">Submit</button>
         </form>
     </main>
 </body>
